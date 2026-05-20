@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matemática I | Devoluciones de parciales</title>
+  <meta name="description" content="Portal de acceso a devoluciones del Primer Parcial de Matemática I - Universidad Nacional de Lanús." />
+  <style>
+    :root {
+      --unla-bordo: #8b0031;
+      --unla-bordo-oscuro: #5f0023;
+      --unla-gris: #f4f4f4;
+      --unla-gris-2: #e7e7e7;
+      --texto: #272727;
+      --muted: #626262;
+      --blanco: #ffffff;
+      --sombra: 0 18px 45px rgba(0, 0, 0, 0.18);
+      --radio: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background:
+        radial-gradient(circle at top left, rgba(139, 0, 49, 0.16), transparent 36%),
+        linear-gradient(135deg, #ffffff 0%, #f7f3f5 48%, #f0e8ec 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .page {
+      width: min(1120px, 100%);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(139, 0, 49, 0.16);
+      border-radius: 30px;
+      box-shadow: var(--sombra);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--unla-bordo) 0%, var(--unla-bordo-oscuro) 100%);
+      color: var(--blanco);
+      padding: 28px 34px;
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .logo-box {
+      width: 96px;
+      height: 96px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logo-fallback {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.04;
+      letter-spacing: -0.8px;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: clamp(15px, 2vw, 18px);
+      opacity: 0.92;
+      line-height: 1.45;
+    }
+
+    main {
+      padding: 34px;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 26px;
+    }
+
+    .panel {
+      background: var(--blanco);
+      border: 1px solid var(--unla-gris-2);
+      border-radius: var(--radio);
+      padding: 24px;
+    }
+
+    .panel h2 {
+      margin: 0 0 10px 0;
+      color: var(--unla-bordo);
+      font-size: 22px;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 16px;
+    }
+
+    .meta {
+      display: grid;
+      gap: 10px;
+      align-content: center;
+    }
+
+    .meta-item {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #fafafa;
+      border: 1px solid var(--unla-gris-2);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--texto);
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--blanco);
+      border: 1px solid rgba(139, 0, 49, 0.16);
+      border-radius: var(--radio);
+      padding: 26px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 8px;
+      background: linear-gradient(180deg, var(--unla-bordo), var(--unla-bordo-oscuro));
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.13);
+      border-color: rgba(139, 0, 49, 0.34);
+    }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(139, 0, 49, 0.09);
+      color: var(--unla-bordo);
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px 0;
+      font-size: 27px;
+      color: var(--texto);
+    }
+
+    .card p {
+      margin: 0 0 22px 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 15.5px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+      width: 100%;
+      border-radius: 16px;
+      padding: 14px 18px;
+      background: var(--unla-bordo);
+      color: var(--blanco);
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--unla-bordo-oscuro);
+      transform: translateY(-1px);
+    }
+
+    .notice {
+      margin-top: 24px;
+      padding: 16px 18px;
+      background: #fff8fb;
+      border: 1px solid rgba(139, 0, 49, 0.18);
+      border-radius: 18px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 18px 34px 28px 34px;
+      color: var(--muted);
+      font-size: 13.5px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 14px; }
+      header { grid-template-columns: 72px 1fr; padding: 22px; gap: 16px; }
+      .logo-box { width: 72px; height: 72px; border-radius: 16px; }
+      main { padding: 22px; }
+      .intro, .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo-box" aria-label="Logo UNLa">
+        <img src="Lanus.jpg" alt="Universidad Nacional de Lanús" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;logo-fallback&quot;>UNLa</div>';" />
+      </div>
+      <div>
+        <h1>Devoluciones del Primer Parcial</h1>
+        <p class="subtitle">Matemática I — Universidad Nacional de Lanús</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro" aria-label="Información general">
+        <div class="panel">
+          <h2>Acceso a correcciones personalizadas</h2>
+          <p>
+            Seleccioná el turno correspondiente para ingresar al sistema de devolución individual.
+            En cada caso se solicitarán los datos definidos por la cátedra para acceder exclusivamente
+            a la corrección propia.
+          </p>
+        </div>
+        <div class="panel meta">
+          <div class="meta-item">
+            <strong>Materia</strong>
+            Matemática I
+          </div>
+          <div class="meta-item">
+            <strong>Evaluación</strong>
+            Primer Parcial
+          </div>
+          <div class="meta-item">
+            <strong>Institución</strong>
+            Universidad Nacional de Lanús
+          </div>
+        </div>
+      </section>
+
+      <section class="cards" aria-label="Accesos por turno">
+        <article class="card">
+          <div>
+            <span class="badge">Turno mañana</span>
+            <h3>Corrección TM</h3>
+            <p>
+              Ingreso al sistema de devolución personalizada correspondiente al turno mañana.
+            </p>
+          </div>
+          <a class="btn" href="turno-manana/" aria-label="Ingresar a correcciones del turno mañana">
+            Ingresar al Turno Mañana →
+          </a>
+        </article>
+
+        <article class="card">
+          <div>
+            <span class="badge">Turno noche</span>
+            <h3>Corrección TN</h3>
+            <p>
+              Ingreso al sistema de devolución personalizada correspondiente al turno noche.
+            </p>
+          </div>
+          <a class="btn" href="turno-noche/" aria-label="Ingresar a correcciones del turno noche">
+            Ingresar al Turno Noche →
+          </a>
+        </article>
+      </section>
+
+      <div class="notice">
+        <strong>Importante:</strong> este portal solo deriva a los accesos por turno. La devolución individual
+        se consulta dentro de cada sistema mediante los datos solicitados por la cátedra.
+      </div>
+    </main>
+
+    <footer>
+      Matemática I — Universidad Nacional de Lanús | Devoluciones de parciales
+    </footer>
+  </div>
+</body>
+</html>
