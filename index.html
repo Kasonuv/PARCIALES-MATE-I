@@ -7,12 +7,12 @@
 
   <style>
     :root {
-      --azul-unla: #00558c;
-      --celeste-unla: #00a3d7;
-      --gris-fondo: #f4f7fa;
+      --bordo-unla: #8c0028;
+      --bordo-oscuro: #62001c;
+      --gris-fondo: #f4f4f4;
       --gris-texto: #2b2b2b;
       --blanco: #ffffff;
-      --sombra: rgba(0, 0, 0, 0.12);
+      --sombra: rgba(0, 0, 0, 0.14);
     }
 
     * {
@@ -23,7 +23,7 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, var(--gris-fondo), #e7f2f8);
+      background: linear-gradient(135deg, #f5f5f5, #ececec);
       color: var(--gris-texto);
       min-height: 100vh;
       display: flex;
@@ -42,18 +42,17 @@
     }
 
     .header {
-      background: linear-gradient(135deg, var(--azul-unla), var(--celeste-unla));
+      background: linear-gradient(135deg, var(--bordo-unla), var(--bordo-oscuro));
       color: var(--blanco);
       padding: 36px 40px;
       text-align: center;
     }
 
     .header img {
-      max-width: 150px;
+      max-width: 135px;
       margin-bottom: 18px;
-      background: white;
-      padding: 10px;
-      border-radius: 12px;
+      border-radius: 10px;
+      background: var(--bordo-unla);
     }
 
     .header h1 {
@@ -73,7 +72,7 @@
     }
 
     .content h2 {
-      color: var(--azul-unla);
+      color: var(--bordo-unla);
       margin-bottom: 12px;
       font-size: 1.5rem;
     }
@@ -93,21 +92,21 @@
     }
 
     .card {
-      border: 1px solid #dce9f1;
+      border: 1px solid #ead6dd;
       border-radius: 18px;
       padding: 28px 22px;
       background: #ffffff;
-      box-shadow: 0 8px 20px rgba(0, 85, 140, 0.08);
+      box-shadow: 0 8px 20px rgba(140, 0, 40, 0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 26px rgba(0, 85, 140, 0.16);
+      box-shadow: 0 12px 26px rgba(140, 0, 40, 0.16);
     }
 
     .card h3 {
-      color: var(--azul-unla);
+      color: var(--bordo-unla);
       font-size: 1.35rem;
       margin-bottom: 12px;
     }
@@ -120,7 +119,7 @@
     .btn {
       display: inline-block;
       text-decoration: none;
-      background: var(--azul-unla);
+      background: var(--bordo-unla);
       color: var(--blanco);
       padding: 13px 22px;
       border-radius: 999px;
@@ -129,21 +128,21 @@
     }
 
     .btn:hover {
-      background: #003f68;
+      background: var(--bordo-oscuro);
       transform: scale(1.03);
     }
 
     .footer {
       padding: 22px 36px;
-      background: #eef5f9;
+      background: #f3e8ec;
       text-align: center;
       font-size: 0.9rem;
-      color: #4d5d66;
-      border-top: 1px solid #d8e8f0;
+      color: #4d4d4d;
+      border-top: 1px solid #ead6dd;
     }
 
     .footer strong {
-      color: var(--azul-unla);
+      color: var(--bordo-unla);
     }
 
     @media (max-width: 600px) {
@@ -165,7 +164,7 @@
 <body>
   <main class="container">
     <header class="header">
-      <img src="Lanus.jpg" alt="Logo Universidad Nacional de Lanús" />
+      <img src="./Lanus.jpg" alt="Logo Universidad Nacional de Lanús" />
       <h1>Matemática I</h1>
       <p>Devoluciones personalizadas del Primer Parcial</p>
     </header>
@@ -173,8 +172,8 @@
     <section class="content">
       <h2>Seleccioná tu turno</h2>
       <p>
-        Ingresá a la devolución correspondiente a tu comisión. 
-        En cada caso deberás identificarte con los datos solicitados para acceder únicamente a tu informe individual.
+        Ingresá a la devolución correspondiente a tu comisión. En cada caso deberás
+        identificarte con los datos solicitados para acceder únicamente a tu informe individual.
       </p>
 
       <div class="cards">
@@ -183,7 +182,7 @@
           <p>
             Devoluciones personalizadas del Primer Parcial correspondientes al Turno Mañana.
           </p>
-          <a class="btn" href="1PTM.html">Ingresar al Turno Mañana</a>
+          <a class="btn" href="./1PTM.html">Ingresar al Turno Mañana</a>
         </article>
 
         <article class="card">
@@ -191,7 +190,7 @@
           <p>
             Devoluciones personalizadas del Primer Parcial correspondientes al Turno Noche.
           </p>
-          <a class="btn" href="1PTN.html">Ingresar al Turno Noche</a>
+          <a class="btn" href="./1PTN.html">Ingresar al Turno Noche</a>
         </article>
       </div>
     </section>
